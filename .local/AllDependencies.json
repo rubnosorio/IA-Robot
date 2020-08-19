@@ -2085,15 +2085,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\reos_\\.nuget\\packages\\": {}
+    "C:\\Users\\Ruben\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "IA_Practica1",
       "projectName": "IA_Practica1",
-      "projectPath": "C:\\Users\\reos_\\Documents\\UiPath\\IA_Practica1\\.local",
-      "packagesPath": "C:\\Users\\reos_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\reos_\\Documents\\UiPath\\IA_Practica1\\.local"
+      "projectPath": "C:\\Users\\Ruben\\Documents\\UiPath\\IA-Robot\\.local",
+      "packagesPath": "C:\\Users\\Ruben\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Ruben\\Documents\\UiPath\\IA-Robot\\.local"
     },
     "frameworks": {
       "net461": {
@@ -2138,6 +2138,13 @@
     }
   },
   "logs": [
+    {
+      "code": "NU3034",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'PDFsharp 1.50.5147' from source 'https://api.nuget.org/v3/index.json': This package is signed but not by a trusted signer.",
+      "libraryId": "PDFsharp"
+    },
     {
       "code": "NU3034",
       "level": "Warning",
