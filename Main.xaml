@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="920,1468" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="920,1808" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -52,7 +52,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="641,1643" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="641,2622" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="roboticsia2020@gmail.com" Name="usuario" />
       <Variable x:TypeArguments="x:String" Default="iasemestre2usac" Name="pass" />
@@ -60,12 +60,20 @@
       <Variable x:TypeArguments="x:String" Name="nombrePDF" />
       <Variable x:TypeArguments="x:String" Name="textoPDF" />
       <Variable x:TypeArguments="str:Match" Name="listaTexto" />
-      <Variable x:TypeArguments="x:String" Name="patronNombre">
+      <Variable x:TypeArguments="x:String" Default="(Nombre)([​]*|[ ]*)[:][ ]* [^\n]+" Name="patronNombre" />
+      <Variable x:TypeArguments="x:String" Name="nombre" />
+      <Variable x:TypeArguments="x:String" Name="patronCarne">
         <Variable.Default>
-          <Literal x:TypeArguments="x:String">(Nombre)([​]*|[ ]*)[:][ ]* [^\n]+</Literal>
+          <Literal x:TypeArguments="x:String">(Carne)([​]*|[ ]*)[:][ ]* [^\n]+</Literal>
         </Variable.Default>
       </Variable>
-      <Variable x:TypeArguments="x:String" Name="nombre" />
+      <Variable x:TypeArguments="x:String" Name="carne" />
+      <Variable x:TypeArguments="x:String" Name="patronDPI">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">(DPI)([​]*|[ ]*)[:][ ]* [^\n]+</Literal>
+        </Variable.Default>
+      </Variable>
+      <Variable x:TypeArguments="x:String" Name="dpi" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -132,15 +140,15 @@
         <InArgument x:TypeArguments="str:Match">[Regex.Match(textoPDF, patronNombre, RegexOptions.IgnoreCase )]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="599,399" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="599,300" sap2010:WorkflowViewState.IdRef="If_2">
       <If.Then>
-        <Sequence sap:VirtualizedContainerService.HintSize="376,251" sap2010:WorkflowViewState.IdRef="Sequence_5">
+        <Sequence sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_5">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_3">
             <Assign.To>
               <OutArgument x:TypeArguments="x:String">[nombre]</OutArgument>
             </Assign.To>
@@ -148,7 +156,62 @@
               <InArgument x:TypeArguments="x:String">[listaTexto.Value]</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_6" Text="[nombre]" />
+        </Sequence>
+      </If.Then>
+    </If>
+    <Assign sap:VirtualizedContainerService.HintSize="599,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+      <Assign.To>
+        <OutArgument x:TypeArguments="str:Match">[listaTexto]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="str:Match">[Regex.Match(textoPDF, patronCarne, RegexOptions.IgnoreCase )]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="599,399" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,251" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[carne]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[listaTexto.Value]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_7" Text="[carne]" />
+        </Sequence>
+      </If.Then>
+    </If>
+    <Assign sap:VirtualizedContainerService.HintSize="599,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+      <Assign.To>
+        <OutArgument x:TypeArguments="str:Match">[listaTexto]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="str:Match">[Regex.Match(textoPDF, patronDPI, RegexOptions.IgnoreCase )]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="599,399" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Then>
+        <Sequence sap:VirtualizedContainerService.HintSize="376,251" sap2010:WorkflowViewState.IdRef="Sequence_7">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:String">[dpi]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:String">[listaTexto.Value]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_8" Text="[dpi]" />
         </Sequence>
       </If.Then>
     </If>
