@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="630,2728" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="567,1557" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System" xmlns:str="clr-namespace:System.Text.RegularExpressions;assembly=System" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -52,7 +52,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="527,2563" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="556,1392" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="roboticsia2020@gmail.com" Name="usuario" />
       <Variable x:TypeArguments="x:String" Default="iasemestre2usac" Name="pass" />
@@ -62,31 +62,36 @@
       <Variable x:TypeArguments="str:Match" Name="listaTexto" />
       <Variable x:TypeArguments="x:String" Default="(Nombre)([​]*|[ ]*)[:][ ]* [^\n]+" Name="patronNombre" />
       <Variable x:TypeArguments="x:String" Name="nombre" />
-      <Variable x:TypeArguments="x:String" Default="(Carne)([​]*|[ ]*)[:][ ]* [^\n]+" Name="patronCarne" />
+      <Variable x:TypeArguments="x:String" Name="patronCarne">
+        <Variable.Default>
+          <Literal x:TypeArguments="x:String">((Carne)|(Carnet))([​]*|[ ]*)[:][ ]* [^\n]+</Literal>
+        </Variable.Default>
+      </Variable>
       <Variable x:TypeArguments="x:String" Name="carne" />
       <Variable x:TypeArguments="x:String" Default="(DPI)([​]*|[ ]*)[:][ ]* [^\n]+" Name="patronDPI" />
       <Variable x:TypeArguments="x:String" Name="dpi" />
       <Variable x:TypeArguments="x:String" Name="resultado" />
+      <Variable x:TypeArguments="x:String" Name="correoDestinatario" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:GetIMAPMailMessages TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="roboticsia2020@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="485,22" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="True" Messages="[correos]" OnlyUnreadMessages="True" Password="iasemestre2usac" Port="993" SecureConnection="Auto" Server="imap.gmail.com" Top="30" />
-    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="485,51" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[correos]">
+    <ui:GetIMAPMailMessages TimeoutMS="{x:Null}" DeleteMessages="False" DisplayName="Get IMAP Mail Messages" Email="roboticsia2020@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="514,22" sap2010:WorkflowViewState.IdRef="GetIMAPMailMessages_1" MailFolder="Inbox" MarkAsRead="True" Messages="[correos]" OnlyUnreadMessages="True" Password="iasemestre2usac" Port="993" SecureConnection="Auto" Server="imap.gmail.com" Top="30" />
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="514,51" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[correos]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="correo" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="563,618" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="598,619" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <If Condition="[System.Text.RegularExpressions.Regex.IsMatch(correo.Subject, &quot;[\[](Solicitud Privado)[\]][ ]*[0-9]+&quot;)]" sap:VirtualizedContainerService.HintSize="521,526" sap2010:WorkflowViewState.IdRef="If_1">
+            <If Condition="[System.Text.RegularExpressions.Regex.IsMatch(correo.Subject, &quot;[\[](Solicitud Privado)[\]][ ]*[0-9]+&quot;)]" sap:VirtualizedContainerService.HintSize="556,527" sap2010:WorkflowViewState.IdRef="If_1">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -94,13 +99,21 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
               <If.Then>
-                <Sequence sap:VirtualizedContainerService.HintSize="376,378" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                <Sequence sap:VirtualizedContainerService.HintSize="376,379" sap2010:WorkflowViewState.IdRef="Sequence_3">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                   <ui:SaveMailAttachments Attachments="{x:Null}" DisplayName="Save Attachments" FolderPath="Attachments" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_1" Message="[correo]" />
+                  <Assign DisplayName="Asignar" sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[correoDestinatario]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[correo.From.Address]</InArgument>
+                    </Assign.Value>
+                  </Assign>
                   <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_1">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[nombrePDF]</OutArgument>
@@ -109,7 +122,6 @@
                       <InArgument x:TypeArguments="x:String">[correo.Attachments(0).Name]</InArgument>
                     </Assign.Value>
                   </Assign>
-                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[nombrePDF]" />
                 </Sequence>
               </If.Then>
             </If>
@@ -123,7 +135,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:ForEach>
-    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="485,287" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+    <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="514,51" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
         <ui:ReadPDFText DisplayName="Read PDF Text" FileName="[&quot;Attachments\&quot;+nombrePDF]" sap:VirtualizedContainerService.HintSize="334,59" sap2010:WorkflowViewState.IdRef="ReadPDFText_1" PreserveFormatting="True" Range="All" Text="[textoPDF]" />
       </TryCatch.Try>
@@ -152,8 +170,8 @@
         </Catch>
       </TryCatch.Catches>
     </TryCatch>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="485,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[textoPDF]" />
-    <Assign sap:VirtualizedContainerService.HintSize="485,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="514,59" sap2010:WorkflowViewState.IdRef="MessageBox_5" Text="[textoPDF]" />
+    <Assign sap:VirtualizedContainerService.HintSize="514,60" sap2010:WorkflowViewState.IdRef="Assign_2">
       <Assign.To>
         <OutArgument x:TypeArguments="str:Match">[listaTexto]</OutArgument>
       </Assign.To>
@@ -161,7 +179,7 @@
         <InArgument x:TypeArguments="str:Match">[Regex.Match(textoPDF, patronNombre, RegexOptions.IgnoreCase )]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="485,51" sap2010:WorkflowViewState.IdRef="If_2">
+    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="514,51" sap2010:WorkflowViewState.IdRef="If_2">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -186,7 +204,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <Assign sap:VirtualizedContainerService.HintSize="485,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap:VirtualizedContainerService.HintSize="514,60" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="str:Match">[listaTexto]</OutArgument>
       </Assign.To>
@@ -194,7 +212,7 @@
         <InArgument x:TypeArguments="str:Match">[Regex.Match(textoPDF, patronCarne, RegexOptions.IgnoreCase )]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="485,51" sap2010:WorkflowViewState.IdRef="If_3">
+    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="514,51" sap2010:WorkflowViewState.IdRef="If_3">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -220,7 +238,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <Assign sap:VirtualizedContainerService.HintSize="485,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+    <Assign sap:VirtualizedContainerService.HintSize="514,60" sap2010:WorkflowViewState.IdRef="Assign_6">
       <Assign.To>
         <OutArgument x:TypeArguments="str:Match">[listaTexto]</OutArgument>
       </Assign.To>
@@ -228,7 +246,7 @@
         <InArgument x:TypeArguments="str:Match">[Regex.Match(textoPDF, patronDPI, RegexOptions.IgnoreCase )]</InArgument>
       </Assign.Value>
     </Assign>
-    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="485,51" sap2010:WorkflowViewState.IdRef="If_4">
+    <If Condition="[listaTexto.Success]" sap:VirtualizedContainerService.HintSize="514,51" sap2010:WorkflowViewState.IdRef="If_4">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -254,7 +272,7 @@
         </Sequence>
       </If.Then>
     </If>
-    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Abrir navegador" sap:VirtualizedContainerService.HintSize="485,1319" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="http://34.70.95.98/consulta">
+    <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Abrir navegador" sap:VirtualizedContainerService.HintSize="514,51" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="http://34.70.95.98/consulta">
       <ui:OpenBrowser.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
@@ -408,6 +426,21 @@
           </Sequence>
         </ActivityAction>
       </ui:OpenBrowser.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:OpenBrowser>
+    <If Condition="[resultado.Equals(&quot;-1&quot;)]" DisplayName="Si" sap:VirtualizedContainerService.HintSize="514,293" sap2010:WorkflowViewState.IdRef="If_5">
+      <If.Else>
+        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" Email="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" Password="{x:Null}" Port="{x:Null}" Server="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Estimado &quot; + nombre +&quot; se le informa que su anterior ya ha sido procesada por lo que ya cuenta con un grupo para su privado&quot;]" DisplayName="Enviar mensaje de correo SMTP" EnableSSL="True" sap:VirtualizedContainerService.HintSize="334,145" sap2010:WorkflowViewState.IdRef="SendMail_2" IsBodyHtml="False" SecureConnection="Auto" Subject="[Solicitud Privado]Respuesta" To="[correoDestinatario]">
+          <ui:SendMail.Files>
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+          </ui:SendMail.Files>
+        </ui:SendMail>
+      </If.Else>
+    </If>
   </Sequence>
 </Activity>
