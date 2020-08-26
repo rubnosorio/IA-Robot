@@ -2085,15 +2085,15 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\annel\\.nuget\\packages\\": {}
+    "C:\\Users\\reos_\\.nuget\\packages\\": {}
   },
   "project": {
     "restore": {
       "projectUniqueName": "IA_Practica1",
       "projectName": "IA_Practica1",
-      "projectPath": "C:\\Users\\annel\\Yoselin\\USAC\\IA\\Laboratorio\\Practica1\\IA-Robot\\.local",
-      "packagesPath": "C:\\Users\\annel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\annel\\Yoselin\\USAC\\IA\\Laboratorio\\Practica1\\IA-Robot\\.local"
+      "projectPath": "C:\\Users\\reos_\\Documents\\UiPath\\IA_Practica1\\.local",
+      "packagesPath": "C:\\Users\\reos_\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\reos_\\Documents\\UiPath\\IA_Practica1\\.local"
     },
     "frameworks": {
       "net461": {
